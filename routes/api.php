@@ -20,6 +20,9 @@ use App\Http\Controllers\VolcanoController;
 Route::post('/auth/register',[AuthController::class,'register']);
 Route::post('/auth/login',[AuthController::class,'login']);
 
+ Route::get('volcano/{id}',[VolcanoController::class,'show']);
+    Route::get('volcanoes',[VolcanoController::class,'index']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
     
@@ -30,8 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/list',[AuthController::class,'list']);
 
     Route::post('volcano/create',[VolcanoController::class,'store']);
-    Route::get('volcano/{id}',[VolcanoController::class,'show']);
-    Route::get('volcanoes',[VolcanoController::class,'index']);
+   
 
     Route::post('volcano/update/{id}',[VolcanoController::class,'update']);
     Route::post('volcano/delete/{id}',[VolcanoController::class,'destroy']);
